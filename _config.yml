@@ -19,3 +19,5 @@ minima:
   skin: dark
   social_links:
     github: naved124
+sass:
+  sass_dir: assets
