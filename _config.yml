@@ -1,26 +1,21 @@
 title: "Naved124.github.io"
 description: "Pentesting reports, writeups, notes"
 author: "Naved Khan"
-url: "https://Naved124.github.io"
+url: "https://naved124.github.io"
 
-# Use a GitHub Pages-supported Jekyll theme
 theme: minima
 
-# Markdown & plugins that GitHub Pages supports
 markdown: kramdown
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Navigation links (appear in header if theme supports it)
 header_pages:
   - about.md
   - projects.md
 
-# Minima theme config (optional but useful)
 minima:
   skin: dark
   social_links:
     github: naved124
-
