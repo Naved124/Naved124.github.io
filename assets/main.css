@@ -1,0 +1,23 @@
+---
+---
+
+// Import minima defaults
+@import "minima";
+
+// Custom overrides
+body {
+  background-color: #050608;
+  color: #e0e0e0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+pre, code {
+  background-color: #111318;
+}
