@@ -1,151 +1,246 @@
 /* Hacker Theme Variables */
 $bg-color: #0d0d0d;
 $text-color: #00ff41;
-$accent-color: #008F11;
+$dim-text: #008F11;
 $link-color: #00b32d;
-$error-color: #ff0000;
-$font-stack: 'Courier New', Courier, monospace;
+$error-color: #ff0033;
+$terminal-bg: #111;
+$font-stack: 'Fira Code', 'Courier New', monospace;
 
 /* Reset & Base */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: $bg-color;
-  color: $text-color;
-  font-family: $font-stack;
-  line-height: 1.6;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: $bg-color;
+    color: $text-color;
+    font-family: $font-stack;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* CRT Scanline Effect */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
 }
 
 a {
-  color: $link-color;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 5px $text-color;
-  }
+    color: $link-color;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $dim-text;
+        color: $bg-color;
+        text-decoration: none;
+        box-shadow: 0 0 5px $text-color;
+    }
 }
 
 /* Layout Containers */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Header & Nav */
 header {
-  border-bottom: 1px solid $accent-color;
-  padding-bottom: 20px;
-  margin-bottom: 40px;
-  
-  .site-title {
-    font-size: 2em;
-    font-weight: bold;
-    color: $text-color;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    &:hover {
-        text-shadow: 0 0 10px $text-color;
-    }
-  }
+    border-bottom: 2px solid $dim-text;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
 
-  nav {
-    margin-top: 10px;
-    a {
-      margin-right: 15px;
-      font-weight: bold;
-      text-transform: uppercase;
-      &::before {
-        content: "[ ";
-        color: $accent-color;
-      }
-      &::after {
-        content: " ]";
-        color: $accent-color;
-      }
+    .site-title {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: $text-color;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 0px $dim-text;
+
+        &:hover {
+            animation: glitch 1s linear infinite;
+            background-color: transparent;
+            color: $text-color;
+        }
     }
-  }
+
+    nav {
+        margin-top: 20px;
+        font-size: 1.1em;
+
+        a {
+            margin-right: 20px;
+            font-weight: 500;
+            padding: 2px 8px;
+
+            &:before {
+                content: "[";
+                color: $dim-text;
+                margin-right: 5px;
+            }
+
+            &:after {
+                content: "]";
+                color: $dim-text;
+                margin-left: 5px;
+            }
+
+            &:hover {
+                background-color: $text-color;
+                color: $bg-color;
+
+                &:before,
+                &:after {
+                    color: $bg-color;
+                }
+            }
+        }
+    }
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
-  color: $text-color;
-  margin-top: 1.5em;
-  border-bottom: 1px dashed $accent-color;
-  display: inline-block;
-  padding-bottom: 5px;
+h1,
+h2,
+h3 {
+    color: $text-color;
+    margin-top: 1.5em;
+    border-bottom: 1px dashed $dim-text;
+    display: inline-block;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-code, pre {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  background-color: #1a1a1a;
-  border: 1px solid $accent-color;
-  padding: 2px 5px;
-  border-radius: 3px;
+h1::before,
+h2::before,
+h3::before {
+    content: "> ";
+    color: $dim-text;
+}
+
+code,
+pre {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    background-color: #151515;
+    color: #ddd;
+    border: 1px solid $dim-text;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95em;
 }
 
 pre {
-  padding: 15px;
-  overflow-x: auto;
-  code {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-  }
+    padding: 20px;
+    overflow-x: auto;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+
+    code {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        color: inherit;
+    }
 }
 
 blockquote {
-  border-left: 4px solid $accent-color;
-  margin-left: 0;
-  padding-left: 20px;
-  font-style: italic;
-  color: lighten($text-color, 20%);
+    border-left: 4px solid $text-color;
+    margin-left: 0;
+    padding-left: 20px;
+    font-style: italic;
+    color: lighten($dim-text, 20%);
+    background: rgba(0, 255, 65, 0.05);
+    padding: 10px 20px;
 }
 
 /* Post List */
 .post-list {
-  list-style: none;
-  padding: 0;
-  
-  li {
-    margin-bottom: 15px;
-    
-    .post-meta {
-      color: darken($text-color, 20%);
-      font-size: 0.9em;
-      margin-right: 10px;
+    list-style: none;
+    padding: 0;
+
+    li {
+        margin-bottom: 20px;
+        border-left: 2px solid $dim-text;
+        padding-left: 15px;
+        transition: margin-left 0.2s;
+
+        &:hover {
+            border-left-color: $text-color;
+            margin-left: 5px;
+        }
+
+        .post-meta {
+            color: $dim-text;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .post-link {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: $text-color;
+
+            &:hover {
+                background: none;
+                text-decoration: underline;
+                text-shadow: 0 0 8px $text-color;
+            }
+        }
     }
-    
-    .post-link {
-        font-size: 1.2em;
-    }
-  }
 }
 
 /* Footer */
 footer {
-  margin-top: 50px;
-  border-top: 1px solid $accent-color;
-  padding-top: 20px;
-  text-align: center;
-  font-size: 0.8em;
-  color: darken($text-color, 30%);
+    margin-top: 80px;
+    border-top: 1px solid $dim-text;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-size: 0.9em;
+    color: darken($text-color, 20%);
+
+    a {
+        color: $text-color;
+        border-bottom: 1px dotted $dim-text;
+    }
 }
 
-/* Utilities */
-.blink {
-  animation: blinker 1s linear infinite;
-}
+/* Animations */
+@keyframes glitch {
 
-@keyframes blinker {
-  50% { opacity: 0; }
+    2%,
+    64% {
+        transform: translate(2px, 0) skew(0deg);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
 }
 
 .scancode {
-    color: $accent-color;
+    color: $dim-text;
     font-size: 0.8em;
     display: block;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
 }
