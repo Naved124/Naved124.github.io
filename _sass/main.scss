@@ -1,0 +1,151 @@
+/* Hacker Theme Variables */
+$bg-color: #0d0d0d;
+$text-color: #00ff41;
+$accent-color: #008F11;
+$link-color: #00b32d;
+$error-color: #ff0000;
+$font-stack: 'Courier New', Courier, monospace;
+
+/* Reset & Base */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bg-color;
+  color: $text-color;
+  font-family: $font-stack;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 5px $text-color;
+  }
+}
+
+/* Layout Containers */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header & Nav */
+header {
+  border-bottom: 1px solid $accent-color;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  
+  .site-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: $text-color;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    &:hover {
+        text-shadow: 0 0 10px $text-color;
+    }
+  }
+
+  nav {
+    margin-top: 10px;
+    a {
+      margin-right: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      &::before {
+        content: "[ ";
+        color: $accent-color;
+      }
+      &::after {
+        content: " ]";
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: $text-color;
+  margin-top: 1.5em;
+  border-bottom: 1px dashed $accent-color;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+code, pre {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  background-color: #1a1a1a;
+  border: 1px solid $accent-color;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+pre {
+  padding: 15px;
+  overflow-x: auto;
+  code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+}
+
+blockquote {
+  border-left: 4px solid $accent-color;
+  margin-left: 0;
+  padding-left: 20px;
+  font-style: italic;
+  color: lighten($text-color, 20%);
+}
+
+/* Post List */
+.post-list {
+  list-style: none;
+  padding: 0;
+  
+  li {
+    margin-bottom: 15px;
+    
+    .post-meta {
+      color: darken($text-color, 20%);
+      font-size: 0.9em;
+      margin-right: 10px;
+    }
+    
+    .post-link {
+        font-size: 1.2em;
+    }
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  border-top: 1px solid $accent-color;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.8em;
+  color: darken($text-color, 30%);
+}
+
+/* Utilities */
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+.scancode {
+    color: $accent-color;
+    font-size: 0.8em;
+    display: block;
+    margin-bottom: 5px;
+}

@@ -1,23 +1,21 @@
-title: "Naved124.github.io"
-description: "Pentesting reports, writeups, notes"
+title: "Naved124"
+description: "Cybersecurity, CTF Writeups, and Pentesting Reports"
 author: "Naved Khan"
 url: "https://naved124.github.io"
 
-theme: minima
-
+# Build settings
 markdown: kramdown
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-header_pages:
-  - about.md
-  - projects.md
-
-minima:
-  skin: dark
-  social_links:
-    github: naved124
+# Custom SASS
 sass:
-  sass_dir: assets
+  sass_dir: _sass
+  style: compressed
+
+# Exclude list
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor

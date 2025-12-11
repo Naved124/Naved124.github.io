@@ -1,0 +1,11 @@
+<header>
+  <div class="container">
+    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <nav>
+        <a href="{{ "/" | relative_url }}">~/home</a>
+        <a href="{{ "/about/" | relative_url }}">./about</a>
+        <!-- Add more links here later -->
+        <a href="https://github.com/{{ site.github_username }}">git_status</a>
+    </nav>
+  </div>
+</header>
