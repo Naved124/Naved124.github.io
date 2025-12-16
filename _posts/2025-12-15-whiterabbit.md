@@ -31,7 +31,7 @@ Tools: Ghidra, John, FFUF, restic
 
 Writeup Updated: Dec 15, 2025
 
-Reference: https://app.hackthebox.com/Machines/WhiteRabbit
+Reference: (https://app.hackthebox.com/Machines/WhiteRabbit)
 
 
 **Synopsis**

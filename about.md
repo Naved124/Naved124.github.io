@@ -18,4 +18,4 @@ This blog is where I document my journey, writeups, and findings.
 
 ### > contact
 
-Find me on [GitHub](https://github.com/naved124).
+Find me on [GitHub](https://github.com/naved124), [LinkedIn](https://www.linkedin.com/in/naved-khan-5102a52a0/), [HackTheBox](https://app.hackthebox.com/users/2356899)
