@@ -244,3 +244,13 @@ footer {
     margin-top: 10px;
     font-family: 'Courier New', monospace;
 }
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid $dim-text;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+}

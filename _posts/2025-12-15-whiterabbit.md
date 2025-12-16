@@ -7,9 +7,9 @@ categories: [writeup, hackthebox, insane]
 tags: [linux, gophish, n8n, sql-injection, restic, reverse-engineering]
 ---
 
-![hi.png](assets/hi.png)
+![hi.png](/assets/hi.png)
 
-![white.png](assets/white.png)
+![white.png](/assets/white.png)
 
 # White Rabbit
 
@@ -94,11 +94,11 @@ echo '10.10.11.63 whiterabbit.htb' | sudo tee -a /etc/hosts
 10.10.11.63 whiterabbit.htb
 ```
 
-![[Pasted image 20251216095526.png]]
+![Pasted image 20251216095526.png](/assets/Pasted image 20251216095526.png)
 
 While navigating the website, we see a service for penetration testing being advertised. Checking out the ```Latest News``` section reveals services being used.
 
-![[Pasted image 20251216095854.png]]
+![Pasted image 20251216095854.png](/assets/Pasted image 20251216095854.png)
 
 Now we begin **subdomain enumeration** to discover potential `virtual hosts`. There are multiple tools for performing this task but my personal favourite is **ffuf**.
 
@@ -134,7 +134,7 @@ status                  [Status: 302, Size: 32, Words: 4, Lines: 1, Duration: 15
 
 From this response we can see `status.whiterabbit.htb` is a virtual host thats active. We add that new entry to our /etc/hosts file. When navigating to the site we are presented with a `Uptime Kuma` login portal, but without credentials we can't progress from here. By default in Kuma, there is a `/status` endpoint so we will perform a directory fuzz to see if we can discover any publicly accessible pages.
 
-![[Pasted image 20251216101001.png]]
+![Pasted image 20251216101001.png](/assets/Pasted image 20251216101001.png)
 
 ```zsh
 ffuf -w /usr/share/SecLists/Discovery/Web-Content/raft-small-words.txt -u http://status.whiterabbit.htb/status/FUZZ
@@ -166,14 +166,14 @@ temp                    [Status: 200, Size: 3359, Words: 304, Lines: 41, Duratio
 
 Now accessing the http://status.whiterabbit.htb/status/temp page reveals a few subdomains.
 
-![[Pasted image 20251216102608.png]]
+![Pasted image 20251216102608.png](/assets/Pasted image 20251216102608.png)
 Accessing the `Wiki.js` link, we can navigate to Main menu then `GoPhish Webhooks` and read about the `n8n `workflow from a `GoPhish webhook` that works with phishing data and writes to database.
 
-![[Pasted image 20251216103249.png]]
+![Pasted image 20251216103249.png](/assets/Pasted image 20251216103249.png)
 
 Scrolling down a bit reveals a `downloadable` file which is a live execution history of the workflow along with instructions on how to use the webhook itself.
 
-![[Pasted image 20251216103421.png]]
+![Pasted image 20251216103421.png](/assets/Pasted image 20251216103421.png)
 
 **SQL Injection**
 - - -
@@ -181,16 +181,19 @@ Scrolling down a bit reveals a `downloadable` file which is a live execution his
 We update our /etc/hosts file to add the `28efa8f7df.whiterabbit.htb`  subdomain. Analysing the `gophish_to_phishing_score_database.json`  reveals a potential SQL injection:
 
 ```json
+{% raw %}
 "parameters": {
 	"operation": "executeQuery",
 	"query": "SELECT * FROM victims where email = \"{{ $json.body.email }}\" LIMIT 1",
 	"options": {}
 },
+{% endraw %}
 ```
 
 This code will result in a direct injection for the email field and it should be possible to get an error based `SQL injection` because the debug node will provide the error messages. But there are some limitations. The `HTTP` request shown in the article works fine, but changing any data in the body will result in a failure because of the signature check that happens before any data is submitted to the database. This is because `GoPhish webhooks` can use a secret to sign the messages they send according to the documentation. Fortunately, the secret for the `HMAC` calculation is also leaked in the workflow `JSON` file and the information about the signing are available in the workflow and the `GoPhish` documentation.
 
 ```json
+{% raw %}
 "parameters": {
 "action": "hmac",
 "type": "SHA256",
@@ -198,6 +201,7 @@ This code will result in a direct injection for the email field and it should be
 "dataPropertyName": "calculated_signature",
 "secret": "3CWVGMndgMvdVAzOjqBiTicmv7gxc6IS"
 },
+{% endraw %}
 ```
 
 We can edit the POST request  provided in the documentation to attempt a triggering of SQL injection .
@@ -220,15 +224,15 @@ Content-Length: 81
 }
 ```
 
-![[Pasted image 20251216110915.png]]
+![Pasted image 20251216110915.png](/assets/Pasted image 20251216110915.png)
 
 The reason for this is because the signature needs to be computed against the payload currently being used. To do this we will use `CyberChef` .
 
-![[Pasted image 20251216105245.png]]
+![Pasted image 20251216105245.png](/assets/Pasted image 20251216105245.png)
 
 After replacing the `x-gophish-signature`  with the new one we just computed, we are able to trigger the error-based SQL injection.
 
-![[Pasted image 20251216111322.png]]
+![Pasted image 20251216111322.png](/assets/Pasted image 20251216111322.png)
 
 From here, we can attempt to extract database names. For example, the following payload will extract the first database name that's not like `information_schema` .
 ```json
@@ -245,7 +249,7 @@ The summary of this injection is as follows:
 -  `Subquery` pulls a database name from `information_schema.schemata` .
 -  Output appears in server error messages resulting in a classic error-based extraction.
 
-![[Pasted image 20251216113543.png]]
+![Pasted image 20251216113543.png](/assets/Pasted image 20251216113543.png)
 
 Now that we have a successful injection point and a way to produce output, we can script this to perform a full dump using Python. We create a tamper function which will encode the payloads using the secret and append the payload to the POST parameters, since this is a error-based injection that only displays one entry at a time, we need to loop over in a range to extract all values correctly. To limit the output I restricted the output for the specific data we are looking for.
 
@@ -776,7 +780,7 @@ neo-password-generator                                                          
 
 Now we import the binary into `Ghidra` and begin analysing the structure of the `ELF binary` . Taking a look at the `main` function, we see the following:
 
-![[Pasted image 20251216142550.png]]
+![Pasted image 20251216142550.png](/assets/Pasted image 20251216142550.png)
 
 ```c
 undefined8 main(void)
