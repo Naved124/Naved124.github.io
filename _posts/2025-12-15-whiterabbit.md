@@ -16,7 +16,7 @@ tags: [linux, gophish, n8n, sql-injection, restic, reverse-engineering]
 
 **Machine Creator**: FLX0x00
 **Difficulty**: Insane
-
+**OS**: Linux
 **Synopsis**
 - - - 
 
