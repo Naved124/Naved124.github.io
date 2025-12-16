@@ -1,16 +1,20 @@
-![[hi.png]]
+---
+layout: post
+title: "White Rabbit Writeup"
+date: 2025-12-15
+author: "DarkAngel79 (Naved khan)"
+categories: [writeup, hackthebox, insane]
+tags: [linux, gophish, n8n, sql-injection, restic, reverse-engineering]
+---
 
+![hi.png](assets/hi.png)
 
-![[white.png]]  
-**White Rabbit**
+![white.png](assets/white.png)
 
-15 December 2025
+# White Rabbit
 
-Author: DarkAngel79 (Naved khan)
-
-Machine Creator:  FLX0x00
-
-Difficulty: Insane
+**Machine Creator**: FLX0x00
+**Difficulty**: Insane
 
 **Synopsis**
 - - - 
