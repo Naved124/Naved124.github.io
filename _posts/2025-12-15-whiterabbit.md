@@ -4,7 +4,7 @@ title: "White Rabbit Writeup"
 date: 2025-12-15
 author: "DarkAngel79 (Naved khan)"
 categories: [writeup, hackthebox, insane]
-os : Linux
+os : "Linux"
 tags: [linux, gophish, n8n, sql-injection, restic, reverse-engineering]
 ---
 
