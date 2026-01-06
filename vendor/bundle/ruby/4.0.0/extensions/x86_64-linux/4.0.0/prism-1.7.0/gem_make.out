@@ -1,0 +1,12 @@
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/prism-1.7.0/ext/prism
+/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/bin/ruby extconf.rb
+checking for prism.h in /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/prism-1.7.0/include... yes
+checking for prism/extension.h in /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/prism-1.7.0/ext... yes
+checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/prism-1.7.0/ext/prism
+make DESTDIR\= sitearchdir\=./.gem.20260106-6591-746mbs sitelibdir\=./.gem.20260106-6591-746mbs clean
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/prism-1.7.0/ext/prism
+make DESTDIR\= sitearchdir\=./.gem.20260106-6591-746mbs sitelibdir\=./.gem.20260106-6591-746mbs
+make failedNo such file or directory - make

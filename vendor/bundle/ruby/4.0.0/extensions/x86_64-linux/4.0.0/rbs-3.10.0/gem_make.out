@@ -1,0 +1,14 @@
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/rbs-3.10.0/ext/rbs_extension
+/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/bin/ruby extconf.rb
+checking for whether -std=gnu99 is accepted as CFLAGS... yes
+checking for whether -Wimplicit-fallthrough is accepted as CFLAGS... yes
+checking for whether -Wunused-result is accepted as CFLAGS... yes
+checking for whether -Wc++-compat is accepted as CFLAGS... yes
+checking for whether -DNDEBUG is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/rbs-3.10.0/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20260106-6591-mcx5lc sitelibdir\=./.gem.20260106-6591-mcx5lc clean
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/rbs-3.10.0/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20260106-6591-mcx5lc sitelibdir\=./.gem.20260106-6591-mcx5lc
+make failedNo such file or directory - make

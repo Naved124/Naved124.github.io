@@ -1,0 +1,27 @@
+have_type: checking for rb_io_mode_t in ruby/io.h... -------------------- yes
+
+LD_LIBRARY_PATH=.:/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib:/nix/store/qd876zgfn2pllqjbl1gddw72gg4cpdbg-libdbusmenu-glib-16.04.0/lib:/nix/store/65r1npwc641ggvh4x782wrhj3j1vr7ad-pipewire-1.4.9-jack/lib LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0/x86_64-linux -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0/ruby/backward -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0 -I.    -O3 -fPIC conftest.c -L. -L/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib -Wl,-rpath,/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib -L/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib -lruby-4.0.0  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/lib:/nix/store/qd876zgfn2pllqjbl1gddw72gg4cpdbg-libdbusmenu-glib-16.04.0/lib:/nix/store/65r1npwc641ggvh4x782wrhj3j1vr7ad-pipewire-1.4.9-jack/lib LSAN_OPTIONS=detect_leaks=0 "gcc -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0/x86_64-linux -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0/ruby/backward -I/nix/store/1avpwa9m2p0mnqdww479d6dfkx4z1mdj-ruby-4.0.0/include/ruby-4.0.0 -I.    -O3 -fPIC   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/io.h>
+4: 
+5: /*top*/
+6: typedef rb_io_mode_t conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
