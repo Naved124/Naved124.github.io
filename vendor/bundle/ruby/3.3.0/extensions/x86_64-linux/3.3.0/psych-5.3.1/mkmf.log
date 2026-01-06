@@ -1,0 +1,33 @@
+pkg_config: checking for pkg-config for yaml-0.1... -------------------- not found
+
+LD_LIBRARY_PATH=.:/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib:/nix/store/qd876zgfn2pllqjbl1gddw72gg4cpdbg-libdbusmenu-glib-16.04.0/lib:/nix/store/65r1npwc641ggvh4x782wrhj3j1vr7ad-pipewire-1.4.9-jack/lib pkg-config --exists yaml-0.1
+package configuration for yaml-0.1 is not found
+--------------------
+
+find_header: checking for yaml.h... -------------------- no
+
+LD_LIBRARY_PATH=.:/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib:/nix/store/qd876zgfn2pllqjbl1gddw72gg4cpdbg-libdbusmenu-glib-16.04.0/lib:/nix/store/65r1npwc641ggvh4x782wrhj3j1vr7ad-pipewire-1.4.9-jack/lib "gcc -o conftest -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0/x86_64-linux -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0/ruby/backward -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0 -I.    -O3 -fPIC conftest.c  -L. -L/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib -Wl,-rpath,/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -Wl,-rpath,/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib -L/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib -lruby-3.3.10  -lm -lpthread  -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+LD_LIBRARY_PATH=.:/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/lib:/nix/store/qd876zgfn2pllqjbl1gddw72gg4cpdbg-libdbusmenu-glib-16.04.0/lib:/nix/store/65r1npwc641ggvh4x782wrhj3j1vr7ad-pipewire-1.4.9-jack/lib "gcc -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0/x86_64-linux -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0/ruby/backward -I/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/include/ruby-3.3.0 -I.    -O3 -fPIC   -c conftest.c"
+conftest.c:3:10: fatal error: yaml.h: No such file or directory
+    3 | #include <yaml.h>
+      |          ^~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <yaml.h>
+/* end */
+
+--------------------
+
