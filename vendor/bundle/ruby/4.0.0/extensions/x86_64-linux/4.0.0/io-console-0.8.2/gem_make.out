@@ -16,7 +16,7 @@ checking for ttyname_r()... yes
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-v484i7 sitelibdir\=./.gem.20260106-16735-v484i7 clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-owdxtn sitelibdir\=./.gem.20260106-21704-owdxtn clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-v484i7 sitelibdir\=./.gem.20260106-16735-v484i7
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-owdxtn sitelibdir\=./.gem.20260106-21704-owdxtn
 make failedNo such file or directory - make

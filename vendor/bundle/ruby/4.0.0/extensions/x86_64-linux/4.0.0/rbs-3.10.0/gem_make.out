@@ -8,7 +8,7 @@ checking for whether -DNDEBUG is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/rbs-3.10.0/ext/rbs_extension
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-aabjak sitelibdir\=./.gem.20260106-16735-aabjak clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-q5bfcj sitelibdir\=./.gem.20260106-21704-q5bfcj clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/rbs-3.10.0/ext/rbs_extension
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-aabjak sitelibdir\=./.gem.20260106-16735-aabjak
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-q5bfcj sitelibdir\=./.gem.20260106-21704-q5bfcj
 make failedNo such file or directory - make

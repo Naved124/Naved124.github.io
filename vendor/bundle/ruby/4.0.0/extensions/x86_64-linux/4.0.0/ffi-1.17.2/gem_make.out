@@ -10,7 +10,7 @@ creating extconf.h
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/ffi-1.17.2/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-a59zbp sitelibdir\=./.gem.20260106-16735-a59zbp clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-1edj0w sitelibdir\=./.gem.20260106-21704-1edj0w clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/ffi-1.17.2/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20260106-16735-a59zbp sitelibdir\=./.gem.20260106-16735-a59zbp
+make DESTDIR\= sitearchdir\=./.gem.20260106-21704-1edj0w sitelibdir\=./.gem.20260106-21704-1edj0w
 make failedNo such file or directory - make
