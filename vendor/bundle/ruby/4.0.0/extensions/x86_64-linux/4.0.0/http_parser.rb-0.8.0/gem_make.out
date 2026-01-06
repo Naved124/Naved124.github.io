@@ -3,7 +3,7 @@ current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/g
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20260106-8823-ylddkf sitelibdir\=./.gem.20260106-8823-ylddkf clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-16735-u61dpc sitelibdir\=./.gem.20260106-16735-u61dpc clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20260106-8823-ylddkf sitelibdir\=./.gem.20260106-8823-ylddkf
+make DESTDIR\= sitearchdir\=./.gem.20260106-16735-u61dpc sitelibdir\=./.gem.20260106-16735-u61dpc
 make failedNo such file or directory - make

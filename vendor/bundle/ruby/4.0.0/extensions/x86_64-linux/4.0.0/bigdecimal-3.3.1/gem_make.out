@@ -22,7 +22,7 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260106-8823-7qoymz sitelibdir\=./.gem.20260106-8823-7qoymz clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-16735-ffnb44 sitelibdir\=./.gem.20260106-16735-ffnb44 clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/bigdecimal-3.3.1/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260106-8823-7qoymz sitelibdir\=./.gem.20260106-8823-7qoymz
+make DESTDIR\= sitearchdir\=./.gem.20260106-16735-ffnb44 sitelibdir\=./.gem.20260106-16735-ffnb44
 make failedNo such file or directory - make

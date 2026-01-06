@@ -1,0 +1,19 @@
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/3.3.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/nix/store/0akh4i9af1sxvdn439mmx8iafac8cns5-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/3.3.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20260106-14616-9ch6v sitelibdir\=./.gem.20260106-14616-9ch6v clean
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/3.3.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20260106-14616-9ch6v sitelibdir\=./.gem.20260106-14616-9ch6v
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.so
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/3.3.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20260106-14616-9ch6v sitelibdir\=./.gem.20260106-14616-9ch6v install
+install -c -p -m 755 ruby_http_parser.so ./.gem.20260106-14616-9ch6v
+
+current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/3.3.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20260106-14616-9ch6v sitelibdir\=./.gem.20260106-14616-9ch6v clean
