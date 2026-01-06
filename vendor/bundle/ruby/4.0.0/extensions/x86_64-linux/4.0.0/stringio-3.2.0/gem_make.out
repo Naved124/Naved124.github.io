@@ -4,7 +4,7 @@ checking for rb_io_mode_t in ruby/io.h... yes
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/stringio-3.2.0/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-hvnhc8 sitelibdir\=./.gem.20260106-6591-hvnhc8 clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-hst4ud sitelibdir\=./.gem.20260106-8823-hst4ud clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/stringio-3.2.0/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-hvnhc8 sitelibdir\=./.gem.20260106-6591-hvnhc8
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-hst4ud sitelibdir\=./.gem.20260106-8823-hst4ud
 make failedNo such file or directory - make

@@ -6,7 +6,7 @@ checking for altzone in time.h with -Werror... no
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/date-3.5.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-1qcrg1 sitelibdir\=./.gem.20260106-6591-1qcrg1 clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-ss00m1 sitelibdir\=./.gem.20260106-8823-ss00m1 clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/date-3.5.1/ext/date
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-1qcrg1 sitelibdir\=./.gem.20260106-6591-1qcrg1
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-ss00m1 sitelibdir\=./.gem.20260106-8823-ss00m1
 make failedNo such file or directory - make

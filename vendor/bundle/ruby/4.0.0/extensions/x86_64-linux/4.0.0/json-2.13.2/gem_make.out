@@ -6,7 +6,7 @@ checking for cpuid.h... yes
 creating Makefile
 
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/json-2.13.2/ext/json/ext/generator
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-mr29h0 sitelibdir\=./.gem.20260106-6591-mr29h0 clean
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-vv52rk sitelibdir\=./.gem.20260106-8823-vv52rk clean
 current directory: /home/binary0x0/Naved124.github.io/vendor/bundle/ruby/4.0.0/gems/json-2.13.2/ext/json/ext/generator
-make DESTDIR\= sitearchdir\=./.gem.20260106-6591-mr29h0 sitelibdir\=./.gem.20260106-6591-mr29h0
+make DESTDIR\= sitearchdir\=./.gem.20260106-8823-vv52rk sitelibdir\=./.gem.20260106-8823-vv52rk
 make failedNo such file or directory - make
