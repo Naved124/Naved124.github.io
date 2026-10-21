@@ -11,7 +11,7 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
   handle      = "naved"
   description = "Writeups for retired HTB/THM boxes, web & cloud security notes, and bug bounty updates."
   github      = "https://github.com/Naved124"
-  linkedin    = ""   # paste your LinkedIn URL to show it in the footer
+  linkedin    = "https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0" 
 
 [menus]
   [[menus.main]]
