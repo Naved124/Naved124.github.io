@@ -1,0 +1,53 @@
+# Site settings — edit the [params] block to make it yours.
+baseURL = "https://naved124.github.io/"   # the deploy workflow overrides this automatically
+locale = "en-US"
+title = "naved // security notes"
+enableRobotsTXT = true
+summaryLength = 30
+titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
+
+[params]
+  author      = "MD Naved Raja Khan"
+  handle      = "naved"
+  description = "Writeups for retired HTB/THM boxes, web & cloud security notes, and bug bounty updates."
+  github      = "https://github.com/Naved124"
+  linkedin    = ""   # paste your LinkedIn URL to show it in the footer
+
+[menus]
+  [[menus.main]]
+    name = "writeups"
+    pageRef = "/writeups"
+    weight = 10
+  [[menus.main]]
+    name = "notes"
+    pageRef = "/notes"
+    weight = 20
+  [[menus.main]]
+    name = "bugs"
+    pageRef = "/bugs"
+    weight = 30
+  [[menus.main]]
+    name = "tags"
+    pageRef = "/tags"
+    weight = 40
+  [[menus.main]]
+    name = "about"
+    pageRef = "/about"
+    weight = 50
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.highlight]
+    noClasses = false      # colours come from assets/css/syntax.css (light + dark)
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.goldmark.renderer]
+    unsafe = false         # raw HTML in markdown stays disabled
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]

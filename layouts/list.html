@@ -1,0 +1,18 @@
+{{ define "main" }}
+<header class="post-head">
+  <h1>{{ if eq .Kind "term" }}#{{ end }}{{ .Title | lower }}</h1>
+  {{ with .Content }}<div class="prose lead">{{ . }}</div>{{ end }}
+</header>
+
+{{ if eq .Kind "taxonomy" }}
+  <ul class="tag-cloud">
+    {{ range .Pages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a> <span class="count">{{ len .Pages }}</span></li>
+    {{ else }}
+    <li class="empty">No tags yet.</li>
+    {{ end }}
+  </ul>
+{{ else }}
+  {{ partial "post-list.html" (dict "pages" .Pages "showType" (eq .Kind "term")) }}
+{{ end }}
+{{ end }}

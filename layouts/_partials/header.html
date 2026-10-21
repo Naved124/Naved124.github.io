@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="prompt" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+      <span class="p-user">{{ site.Params.handle }}</span><span class="p-at">@</span><span class="p-host">sec</span><span class="p-path">:~</span><span class="p-sign">$</span><span class="cursor" aria-hidden="true"></span>
+    </a>
+    <nav aria-label="main">
+      <ul>
+        {{- $current := . }}
+        {{- range site.Menus.main }}
+        {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+        {{- with .Page }}{{ if or (eq $current .) ($current.IsDescendant .) }}{{ $active = true }}{{ end }}{{ end }}
+        <li><a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="intro">
+  <h1 class="visually-hidden">{{ site.Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+</section>
+
+{{ $sections := slice "writeups" "notes" "bugs" }}
+{{ $posts := where site.RegularPages "Section" "in" $sections }}
+
+<section aria-labelledby="latest">
+  <h2 id="latest" class="section-label">latest</h2>
+  {{ partial "post-list.html" (dict "pages" (first 10 $posts) "showType" true) }}
+</section>
+
+<section class="counts" aria-label="post counts">
+  {{ range $sections }}
+    {{ with site.GetPage (printf "/%s" .) }}
+    <a href="{{ .RelPermalink }}"><strong>{{ len .RegularPages }}</strong> {{ .Title | lower }}</a>
+    {{ end }}
+  {{ end }}
+</section>
+{{ end }}

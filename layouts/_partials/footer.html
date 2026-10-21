@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>© {{ now.Year }} {{ site.Params.author }}</p>
+    <ul class="links">
+      {{ with site.Params.github }}<li><a href="{{ . }}" rel="me">github</a></li>{{ end }}
+      {{ with site.Params.linkedin }}<li><a href="{{ . }}" rel="me">linkedin</a></li>{{ end }}
+      <li><a href="{{ "index.xml" | relURL }}">rss</a></li>
+    </ul>
+  </div>
+  <p class="wrap disclaimer">Writeups cover retired machines and publicly disclosed findings only. Everything here was tested on systems I was authorised to test.</p>
+</footer>

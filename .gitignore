@@ -1,0 +1,7 @@
+public/
+resources/_gen/
+.hugo_build.lock
+# never publish secrets or loot by accident
+*.ovpn
+loot/
+*creds*

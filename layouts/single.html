@@ -1,0 +1,63 @@
+{{ define "main" }}
+{{ partial "publish-guard.html" . }}
+{{ $isPost := in (slice "writeups" "notes" "bugs") .Section }}
+<article class="post">
+  <header class="post-head">
+    {{ if $isPost }}<p class="crumb"><a href="{{ .CurrentSection.RelPermalink }}">~/{{ .Section }}</a></p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ if $isPost }}
+    <p class="byline">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+      <span aria-hidden="true">·</span> {{ .ReadingTime }} min read
+      {{ if ne .Lastmod .Date }}<span aria-hidden="true">·</span> updated {{ .Lastmod.Format "2 Jan 2006" }}{{ end }}
+    </p>
+    {{ end }}
+  </header>
+
+  {{- /* Fact box for writeups and bug posts */}}
+  {{ $facts := slice }}
+  {{ if eq .Section "writeups" }}
+    {{ $facts = slice
+      (dict "k" "platform"   "v" .Params.platform)
+      (dict "k" "os"         "v" .Params.os)
+      (dict "k" "difficulty" "v" .Params.difficulty)
+      (dict "k" "solved"     "v" .Params.solved)
+      (dict "k" "time"       "v" .Params.time_spent) }}
+  {{ else if eq .Section "bugs" }}
+    {{ $facts = slice
+      (dict "k" "program"  "v" .Params.program)
+      (dict "k" "class"    "v" .Params.vuln_class)
+      (dict "k" "severity" "v" .Params.severity)
+      (dict "k" "status"   "v" .Params.status) }}
+  {{ end }}
+  {{ with $facts }}
+  <dl class="facts">
+    {{ range . }}{{ if .v }}<div><dt>{{ .k }}</dt><dd>{{ .v }}</dd></div>{{ end }}{{ end }}
+  </dl>
+  {{ end }}
+
+  {{ if and $isPost (ne .Params.toc false) (gt .WordCount 400) }}
+  <details class="toc" open>
+    <summary>contents</summary>
+    {{ .TableOfContents }}
+  </details>
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{ with .GetTerms "tags" }}
+  <ul class="tags" aria-label="tags">
+    {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+
+  {{ if $isPost }}
+  <nav class="prevnext" aria-label="more posts">
+    {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}"><span>← newer</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}"><span>older →</span>{{ .Title }}</a>{{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}

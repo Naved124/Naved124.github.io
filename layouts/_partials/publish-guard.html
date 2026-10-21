@@ -1,0 +1,14 @@
+{{- /*
+  Publishing guardrails. The build FAILS (so nothing goes live) if:
+    - a writeup is not marked `retired: true`   (HTB only allows writeups for retired machines)
+    - a bug report is not marked `disclosed: true` (only publish what the program has disclosed / permitted)
+  Drafts are never published, so you can keep work-in-progress with `draft: true`.
+*/ -}}
+{{- if not .Draft }}
+  {{- if and (eq .Section "writeups") (ne .Params.retired true) }}
+    {{- errorf "BLOCKED: %q is a writeup but is not marked `retired: true`. Only publish writeups for retired machines." .File.Path }}
+  {{- end }}
+  {{- if and (eq .Section "bugs") (ne .Params.disclosed true) }}
+    {{- errorf "BLOCKED: %q is a bug post but is not marked `disclosed: true`. Only publish findings the program has disclosed or allowed you to share." .File.Path }}
+  {{- end }}
+{{- end }}
