@@ -97,7 +97,7 @@ echo "10.129.0.0/16   # HTB lab" > scope.txt
 reconforge scan --scope scope.txt --target <box-ip>
 ```
 
-It's standard-library Python only, with 16 tests. Only point it at machines you own or are
+It's standard-library Python only, with 16 tests at the time of writing. Only point it at machines you own or are
 authorized to test.
 
 **If you're on the defending side,** the fixes for what it flagged on Fawn are simple:
@@ -105,3 +105,5 @@ disable anonymous FTP (`anonymous_enable=NO` in `vsftpd.conf`), or better, repla
 SFTP so credentials never cross the network in cleartext.
 
 Next up: running it against an SMB box, where the signing and share rules come into play.
+
+   > **Update (4 Nov 2026):** v0.3 replaced the keyword CVE search in step 4 with CPE matching and confidence levels. See [reconforge v0.3](/notes/reconforge-v0-3/). The rest of this post still applies.
