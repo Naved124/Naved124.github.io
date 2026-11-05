@@ -82,7 +82,7 @@ Same box as last time: vsftpd 3.0.3, anonymous login allowed.
 
 Two things I like about this result. First, the famous vsftpd backdoor is gone. A keyword-happy tool would happily put it in front of a beginner, and it doesn't apply to 3.0.3. Second, the report still says **anonymous FTP comes first**. Both CVEs are real by NVD's standard, and neither gets you in. Better CVE matching didn't change the lesson from the first post; it just made the CVE section honest.
 
-(The v0.3 example is generated from a reconstructed scan file, since I didn't keep the original XML. The repo labels it that way. The next example will come from a fresh scan.)
+(I re-ran it on a live Fawn instance on 5 Nov 2026 and got the same two CVEs with the same confidence levels. The repo's example is that real scan.)
 
 ## being polite to NVD
 
