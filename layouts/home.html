@@ -29,7 +29,6 @@
   <h2 id="latest" class="section-cmd"><span class="ps" aria-hidden="true">$</span> ls -t ~/posts</h2>
   {{ with index $posts 0 }}
   <a class="feature" href="{{ .RelPermalink }}">
-    {{ with .Params.image }}<img class="feature-img" src="{{ . | relURL }}" alt="" decoding="async">{{ end }}
     <div class="feature-body">
       <p class="feature-meta"><span class="new">new</span> <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> · {{ .Section }} · {{ .ReadingTime }} min</p>
       <h3 class="feature-title">{{ .Title }}</h3>
