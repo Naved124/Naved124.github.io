@@ -1,21 +1,50 @@
 {{ define "main" }}
-<section class="intro">
-  <h1 class="visually-hidden">{{ site.Title }}</h1>
-  <div class="prose">{{ .Content }}</div>
+<section class="hero" aria-label="introduction">
+  <div class="term">
+    <div class="term-bar" aria-hidden="true">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">{{ site.Params.handle }}@sec: ~</span>
+    </div>
+    <div class="term-body">
+      <p class="cmd"><span class="ps" aria-hidden="true">$</span> <span data-type>whoami</span></p>
+      <h1 class="hero-name">{{ site.Params.handle | title }}<span class="hero-dot">.</span></h1>
+      <p class="cmd"><span class="ps" aria-hidden="true">$</span> <span data-type>cat focus.txt</span></p>
+      <ul class="focus">
+        <li>web &amp; api security</li>
+        <li>cloud security</li>
+        <li>offensive security</li>
+      </ul>
+      <p class="cmd"><span class="ps" aria-hidden="true">$</span> <span data-type>cat readme.md</span></p>
+      <div class="prose hero-text">{{ .Content }}</div>
+      <p class="cmd" aria-hidden="true"><span class="ps">$</span> <span class="cursor"></span></p>
+    </div>
+  </div>
 </section>
 
 {{ $sections := slice "writeups" "notes" "bugs" }}
 {{ $posts := where site.RegularPages "Section" "in" $sections }}
 
 <section aria-labelledby="latest">
-  <h2 id="latest" class="section-label">latest</h2>
-  {{ partial "post-list.html" (dict "pages" (first 10 $posts) "showType" true) }}
+  <h2 id="latest" class="section-cmd"><span class="ps" aria-hidden="true">$</span> ls -t ~/posts</h2>
+  {{ with index $posts 0 }}
+  <a class="feature" href="{{ .RelPermalink }}">
+    {{ with .Params.image }}<img class="feature-img" src="{{ . | relURL }}" alt="" decoding="async">{{ end }}
+    <div class="feature-body">
+      <p class="feature-meta"><span class="new">new</span> <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time> · {{ .Section }} · {{ .ReadingTime }} min</p>
+      <h3 class="feature-title">{{ .Title }}</h3>
+      {{ with .Description }}<p class="feature-desc">{{ . }}</p>{{ end }}
+      <span class="feature-go" aria-hidden="true">read <span class="arrow">→</span></span>
+    </div>
+  </a>
+  {{ end }}
+  {{ with after 1 $posts }}{{ partial "post-list.html" (dict "pages" (first 9 .) "showType" true) }}{{ end }}
 </section>
 
 <section class="counts" aria-label="post counts">
   {{ range $sections }}
     {{ with site.GetPage (printf "/%s" .) }}
-    <a href="{{ .RelPermalink }}"><strong>{{ len .RegularPages }}</strong> {{ .Title | lower }}</a>
+    {{ $n := len .RegularPages }}
+    {{ if gt $n 0 }}<a href="{{ .RelPermalink }}"><strong>{{ $n }}</strong> {{ .Title | lower }}</a>{{ end }}
     {{ end }}
   {{ end }}
 </section>

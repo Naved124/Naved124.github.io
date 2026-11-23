@@ -10,8 +10,9 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
-  {{ with resources.Get "js/copy.js" | minify | fingerprint }}
+  <div class="bg-glow" aria-hidden="true"></div>
+  {{ range slice "js/copy.js" "js/fx.js" }}{{ with resources.Get . | minify | fingerprint }}
   <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
-  {{ end }}
+  {{ end }}{{ end }}
 </body>
 </html>

@@ -4,13 +4,14 @@
   <li class="post-row">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
     <div class="post-main">
-      <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}<span class="row-arrow" aria-hidden="true"> →</span></a>
       <div class="chips">
         {{- if $.showType }}<span class="chip type-{{ .Section }}">{{ .Section }}</span>{{ end }}
         {{- with .Params.platform }}<span class="chip">{{ . }}</span>{{ end }}
         {{- with .Params.os }}<span class="chip">{{ . }}</span>{{ end }}
         {{- with .Params.difficulty }}<span class="chip diff-{{ . | lower }}">{{ . }}</span>{{ end }}
         {{- with .Params.severity }}<span class="chip sev-{{ . | lower }}">{{ . }}</span>{{ end }}
+        <span class="read-time">{{ .ReadingTime }} min</span>
       </div>
     </div>
   </li>

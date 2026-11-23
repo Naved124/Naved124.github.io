@@ -161,3 +161,93 @@ code, pre { font-family: var(--mono); font-size: .86em; }
   h1 { font-size: 1.55rem; }
   .post-row { grid-template-columns: 1fr; gap: .1rem; }
 }
+
+/* ---------- atmosphere: dot grid, pointer glow, sticky header ---------- */
+:root { --glow: rgba(180, 83, 9, .10); --dots: rgba(29, 28, 26, .07); --green: var(--ok); }
+@media (prefers-color-scheme: dark) { :root { --glow: rgba(245, 165, 36, .09); --dots: rgba(231, 228, 221, .055); } }
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dots) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  background-attachment: fixed;
+}
+.bg-glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .6s;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), var(--glow), transparent 70%);
+}
+.glow-on .bg-glow { opacity: 1; }
+main, .site-footer { position: relative; }
+.site-header {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
+/* ---------- home: terminal hero ---------- */
+.hero { margin: .5rem 0 3rem; }
+.term {
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 24px 60px -30px rgba(0,0,0,.55), 0 0 0 1px color-mix(in srgb, var(--accent) 6%, transparent);
+}
+.term-bar { display: flex; align-items: center; gap: .45rem; padding: .55rem .8rem; border-bottom: 1px solid var(--line); }
+.dot { width: .7rem; height: .7rem; border-radius: 50%; background: var(--line); }
+.dot:nth-child(1) { background: #ff5f57; } .dot:nth-child(2) { background: #febc2e; } .dot:nth-child(3) { background: #28c840; }
+.term-title { margin-left: auto; margin-right: auto; padding-right: 2.6rem; font: .75rem var(--mono); color: var(--muted); }
+.term-body { padding: 1.3rem 1.4rem 1.1rem; }
+.term-body > * { transition: opacity .25s, transform .25s; }
+/* With effects on, the terminal's lines start hidden and fx.js reveals them in
+   turn; the animation is a safety net that shows them after 4 s regardless. */
+.fx .term-body > * { opacity: 0; transform: translateY(3px); animation: reveal 0s 4s forwards; }
+.fx .term-body > .shown { opacity: 1; transform: none; }
+@keyframes reveal { to { opacity: 1; transform: none; } }
+.cmd { margin: 0 0 .35rem; font: .92rem var(--mono); color: var(--muted); }
+.ps { color: var(--green); font-weight: 700; margin-right: .15rem; }
+.cmd .cursor { margin-left: 0; }
+.hero-name {
+  margin: .1rem 0 1.1rem; font-size: clamp(2.6rem, 9vw, 4.2rem); line-height: 1; letter-spacing: -.04em; font-weight: 700;
+  background: linear-gradient(100deg, var(--text) 30%, var(--accent) 110%); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-dot { color: var(--accent); -webkit-text-fill-color: var(--accent); }
+@media (prefers-color-scheme: dark) { .hero-name { filter: drop-shadow(0 0 22px rgba(245,165,36,.18)); } }
+.focus { list-style: none; padding: 0; margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; gap: .45rem; }
+.focus li { font: 600 .8rem var(--mono); padding: .25rem .65rem; border-radius: 999px; color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.hero-text { margin-bottom: .9rem; }
+.hero-text p { color: var(--text); font-size: .98rem !important; }
+.hero-text p:last-child { color: var(--muted); }
+
+/* ---------- home: newest post, then the rest ---------- */
+.section-cmd { font: 600 .9rem var(--mono); color: var(--muted); margin: 0 0 .9rem; }
+.feature {
+  display: grid; grid-template-columns: 1fr; text-decoration: none; color: var(--text);
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: .6rem;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.feature:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--accent) 55%, transparent); }
+.feature-img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+.feature-body { padding: 1rem 1.2rem 1.1rem; }
+.feature-meta { margin: 0 0 .35rem; font: .78rem var(--mono); color: var(--muted); }
+.new { font-weight: 700; color: var(--bg); background: var(--green); padding: .05rem .4rem; border-radius: 4px; margin-right: .3rem; }
+.feature-title { margin: 0 0 .45rem; font-size: 1.25rem; }
+.feature-desc { margin: 0 0 .7rem; color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.feature-go { font: 600 .85rem var(--mono); color: var(--accent); }
+.arrow, .row-arrow { display: inline-block; transition: transform .2s, opacity .2s; }
+.feature:hover .arrow { transform: translateX(4px); }
+
+.post-row { position: relative; padding-left: .7rem; padding-right: .7rem; margin: 0 -.7rem; border-radius: 6px; transition: background .2s; }
+.post-row::before { content: ""; position: absolute; left: 0; top: .9rem; bottom: .9rem; width: 2px; border-radius: 2px; background: var(--accent); transform: scaleY(0); transition: transform .2s; }
+.post-row:hover { background: color-mix(in srgb, var(--surface) 80%, transparent); }
+.post-row:hover::before { transform: scaleY(1); }
+.row-arrow { opacity: 0; color: var(--accent); }
+.post-row:hover .row-arrow { opacity: 1; transform: translateX(3px); }
+.post-title::after { content: ""; position: absolute; inset: 0; }   /* whole row clickable */
+.read-time { font: .7rem/1.9 var(--mono); color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .feature, .feature:hover, .arrow, .row-arrow, .post-row::before, .term-body > * { transition: none; transform: none; }
+}
+@media (max-width: 560px) {
+  .term-body { padding: 1rem 1rem .9rem; }
+  .term-title { display: none; }
+}
