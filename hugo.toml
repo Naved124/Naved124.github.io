@@ -32,6 +32,10 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
     pageRef = "/tags"
     weight = 40
   [[menus.main]]
+    name = "portfolio"
+    url = "https://naved124.github.io/portfolio/"
+    weight = 45
+  [[menus.main]]
     name = "about"
     pageRef = "/about"
     weight = 50
