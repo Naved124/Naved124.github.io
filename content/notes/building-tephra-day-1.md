@@ -2,8 +2,14 @@
 title: "Building tephra, day 1: from a design doc to a program in the kernel"
 date: 2026-11-10
 draft: false
-tags: [kubernetes, ebpf, detection, runtime-security, blue-team]
+tags:
+  - kubernetes
+  - ebpf
+  - detection
+  - runtime-security
+  - blue-team
 description: "Why I started building a Kubernetes runtime sensor when Falco and Tetragon already exist, the rules I set for it, and what day 1 actually produced: one tiny eBPF program, loaded and attached on every node."
+image: images/tephra-day1-card.png
 ---
 
 ![How a runtime sensor sees inside a container](/images/tephra-day1.png)
