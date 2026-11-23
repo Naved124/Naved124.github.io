@@ -14,6 +14,7 @@
         <span class="read-time">{{ .ReadingTime }} min</span>
       </div>
     </div>
+    {{- with .Params.image }}<img class="row-thumb" src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
   </li>
   {{- else }}
   <li class="empty">Nothing here yet — first one's coming.</li>

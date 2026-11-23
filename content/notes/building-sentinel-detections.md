@@ -4,6 +4,7 @@ date: 2026-11-08
 draft: false
 tags: [detection, kql, sentinel, azure, blue-team]
 description: "Fifteen Microsoft Sentinel rules in KQL, each with a triage playbook and tests that run on the real Kusto engine. Two of the rules were wrong until the tests said so."
+image: images/sentinel-detections-card.png
 ---
 
 ## The idea in one paragraph

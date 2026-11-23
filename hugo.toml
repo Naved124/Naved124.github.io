@@ -9,7 +9,7 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
 [params]
   author      = "MD Naved Raja Khan"
   handle      = "naved"
-  description = "Writeups for retired HTB/THM boxes, web & cloud security notes, and bug bounty updates."
+  description = "MD Naved Raja Khan, security researcher & systems programmer: how I build low-level security tools, what they catch, and what still gets past them."
   github      = "https://github.com/Naved124"
   linkedin    = "https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0" 
   x           = "https://x.com/NavedKhan371877"

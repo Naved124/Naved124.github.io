@@ -205,10 +205,11 @@ main, .site-footer { position: relative; }
 .ps { color: var(--green); font-weight: 700; margin-right: .15rem; }
 .cmd .cursor { margin-left: 0; }
 .hero-name {
-  margin: .1rem 0 1.1rem; font-size: clamp(2.6rem, 9vw, 4.2rem); line-height: 1; letter-spacing: -.04em; font-weight: 700;
+  margin: .1rem 0 1.1rem; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -.04em; font-weight: 700;
   background: linear-gradient(100deg, var(--text) 30%, var(--accent) 110%); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-dot { color: var(--accent); -webkit-text-fill-color: var(--accent); }
+.hero-role { margin: -.5rem 0 1.1rem; font: 600 1rem var(--mono); color: var(--muted); }
 @media (prefers-color-scheme: dark) { .hero-name { filter: drop-shadow(0 0 22px rgba(245,165,36,.18)); } }
 .focus { list-style: none; padding: 0; margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; gap: .45rem; }
 .focus li { font: 600 .8rem var(--mono); padding: .25rem .65rem; border-radius: 999px; color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
@@ -245,9 +246,20 @@ main, .site-footer { position: relative; }
 .read-time { font: .7rem/1.9 var(--mono); color: var(--muted); }
 
 @media (prefers-reduced-motion: reduce) {
-  .feature, .feature:hover, .arrow, .row-arrow, .post-row::before, .term-body > * { transition: none; transform: none; }
+  .feature, .feature:hover, .arrow, .row-arrow, .term-body > * { transition: none; transform: none; }
+  .post-row::before { transition: none; }
 }
 @media (max-width: 560px) {
   .term-body { padding: 1rem 1rem .9rem; }
   .term-title { display: none; }
 }
+
+/* ---------- post thumbnails in lists ---------- */
+.post-row:has(.row-thumb) { grid-template-columns: 6.5rem 1fr 9.5rem; align-items: start; }
+.row-thumb { width: 9.5rem; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); margin-top: .2rem; transition: border-color .2s, transform .2s; }
+.post-row:hover .row-thumb { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); transform: translateY(-1px); }
+@media (max-width: 560px) {
+  .post-row:has(.row-thumb) { grid-template-columns: 1fr; }
+  .row-thumb { grid-row: 1; width: 100%; margin: 0 0 .4rem; }
+}
+@media (prefers-reduced-motion: reduce) { .row-thumb, .post-row:hover .row-thumb { transition: none; transform: none; } }

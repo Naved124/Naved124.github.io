@@ -1,4 +1,4 @@
 ---
 title: "notes"
 ---
-Short explanations of security concepts, PortSwigger lab learnings, and cloud security mechanics.
+How I build my security tools, what they catch, and what still gets past them.

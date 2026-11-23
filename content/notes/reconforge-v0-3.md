@@ -3,6 +3,7 @@ title: "reconforge v0.3: why keyword CVE matching lies"
 date: 2026-11-04
 tags: ["tools", "recon", "python", "nmap", "nvd"]
 summary: "Replacing a keyword CVE search with CPE matching, local version checks and a confidence level on every result. Most of the work turned out to be NVD's data, not the API."
+image: images/reconforge-v03-card.png
 ---
 
 In the [first post](/notes/building-reconforge/) I said reconforge's CVE results were "leads to verify, not confirmed vulnerabilities". That was true, and it bothered me. v0.3 fixes it. Every CVE in the report now says **how sure the tool is** and **why**.

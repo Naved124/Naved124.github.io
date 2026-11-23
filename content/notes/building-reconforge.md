@@ -4,6 +4,7 @@ date: 2026-10-30
 draft: false
 tags: [tools, recon, python, nmap]
 description: "Why I built a scoped recon-to-report tool, how its scope guard and findings engine work, and what it caught on HTB Fawn."
+image: images/reconforge-card.png
 ---
 
 ## The idea in one paragraph
