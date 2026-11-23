@@ -1,7 +1,7 @@
 # Site settings — edit the [params] block to make it yours.
 baseURL = "https://navedkhan.dev/"   # the deploy workflow overrides this automatically
 locale = "en-US"
-title = "naved // security notes"
+title = "MD Naved Raja Khan · security notes"
 enableRobotsTXT = true
 summaryLength = 30
 titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
