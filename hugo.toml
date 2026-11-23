@@ -12,6 +12,7 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
   description = "Writeups for retired HTB/THM boxes, web & cloud security notes, and bug bounty updates."
   github      = "https://github.com/Naved124"
   linkedin    = "https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0" 
+  x           = "https://x.com/NavedKhan371877"
 
 [menus]
   [[menus.main]]
