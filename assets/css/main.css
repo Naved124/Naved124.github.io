@@ -1,3 +1,9 @@
+/* Maple Mono v7.9 (SIL OFL 1.1, see fonts/maple-mono/OFL.txt), self-hosted. */
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Maple Mono"; src: url("../fonts/maple-mono/MapleMono-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
 /* ---------- tokens ---------- */
 :root {
   --bg: #fbfaf7;
@@ -10,8 +16,8 @@
   --ok: #15803d;
   --warn: #b45309;
   --bad: #b91c1c;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Maple Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Maple Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --measure: 46rem;
   --radius: 6px;
 }
