@@ -79,9 +79,8 @@ by a web server". If the event names the script, an attacker can wrap a shell in
 script and the event says `run.sh`, not a shell. If it names the interpreter, wrapping doesn't
 help: a shell is a shell. The script's path isn't lost; it's still in the arguments.
 
-I was asked which one I wanted. My answer was *"use interp, and also always make the best
-security decision."* The first half settled the question. The second half became the rule for
-every decision after it, and it came back a lot.
+I went with the interpreter. The reasoning behind it became the rule for every decision after
+it: **when in doubt, take the option that's better for security.** It came back a lot.
 
 ![Naming the script lets a shell hide in it; naming the interpreter means a shell is always a shell](/images/tephra-day2-script-or-interpreter.png)
 

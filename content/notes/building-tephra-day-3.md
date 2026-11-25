@@ -101,10 +101,9 @@ techniques, and I didn't want it pointed at the wrong cluster by a typo.
 
 ![Each scenario runs a real technique in a throwaway namespace and is judged by the alerts in Loki](/images/tephra-day3-harness.png)
 
-After v0.1.0 was out, my instruction for the next stage was *"yes run it, create attacks and see
-how well it prevents against it"*. It's the right instinct, and it set up the next days: day 3's
-22 scenarios were written by the same person who wrote the rules, which is the easy test. Day 4
-was about the hard one, attacks written to get past them.
+After v0.1.0 was out, the next step was obvious: write real attacks and see how well it holds
+up. That set up the next days. Day 3's 22 scenarios were written by the same person who wrote
+the rules, which is the easy test. Day 4 was about the hard one, attacks written to get past them.
 
 ### The first false positive
 

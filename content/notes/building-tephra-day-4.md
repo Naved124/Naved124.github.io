@@ -19,9 +19,8 @@ was easy to get: I wrote the attacks and the rules. Day 4 was the harder test. I
 whose only goal was to get past my own rules, and wrote down which ones did, and why.
 
 The same day the sensor learned to **block** a few things instead of only reporting them, and
-got rules that need **two events** to fire. And the lab moved for good: *"I told u do all the
-tasks in my AWS EC2 not on my machine"*. Every test from here on runs on a cloud machine, on
-kernel 7.0 that day.
+got rules that need **two events** to fire. And the lab moved for good: from here on, every
+test runs on an AWS EC2 machine, never on my laptop. That day it was kernel 7.0.
 
 ## Eight evasions, three got through
 
