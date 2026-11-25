@@ -12,6 +12,8 @@ description: "Turning a counter into real process events, keeping a process tree
 image: images/tephra-day2-card.png
 ---
 
+![From what the kernel says to a pod: cgroup path, container ID, pod; unresolved means unknown, never host](/images/tephra-day2-cgroup-to-pod.png)
+
 [Day 1](/notes/building-tephra-day-1/) ended with one eBPF program that counted every program
 start on the node, and an agent on every node that loaded it. A counter tells you *how many*.
 Day 2 was about *what*: which program, with what arguments, run by which user, started by
@@ -61,6 +63,9 @@ namespace does, and drop anything outside it. On a real node the agent is in the
 namespace and nothing gets dropped, so the fix costs nothing there. It only matters in the lab,
 but a lab that triple-counts makes every measurement wrong.
 
+![Counting every event, and the bug where a kind lab saw every event three times](/images/tephra-day2-count-honestly.png)
+
+
 ## The decision that became the rule
 
 When a script runs, say `/app/run.sh` starting with `#!/bin/sh`, what should the exec event
@@ -78,11 +83,17 @@ I was asked which one I wanted. My answer was *"use interp, and also always make
 security decision."* The first half settled the question. The second half became the rule for
 every decision after it, and it came back a lot.
 
+![Naming the script lets a shell hide in it; naming the interpreter means a shell is always a shell](/images/tephra-day2-script-or-interpreter.png)
+
+
 ## The process tree
 
 One event isn't enough for detection. "A shell started" is noise. "A shell started *by nginx*"
 is an alert. So the agent keeps a tree of every process and its parent, built from the fork,
 exec and exit events. A few things I didn't expect:
+
+![The process tree, and its three traps: reused pids, processes older than the agent, parents that leave](/images/tephra-day2-process-tree.png)
+
 
 - **A pid alone means nothing.** Linux reuses process ids. If pid 4021 exits and a new
   process gets 4021 a second later, a tree keyed by pid would attach the new process to the
@@ -121,6 +132,7 @@ cgroup ID  12345
 
 The last step uses a Kubernetes *informer*: the agent watches the pods on its own node and
 keeps an index from container ID to pod, so there's no API call per event.
+
 
 Two edge cases mattered:
 
