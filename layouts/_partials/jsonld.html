@@ -1,0 +1,46 @@
+{{- /* Structured data for search engines: who the author is, what the site
+   is, and for a post, the article. */ -}}
+{{- $p := .page }}
+{{- $person := dict
+  "@type" "Person"
+  "@id" (printf "%s#person" site.BaseURL)
+  "name" site.Params.author
+  "jobTitle" site.Params.jobTitle
+  "url" site.BaseURL
+  "image" (absURL site.Params.image)
+  "sameAs" (slice site.Params.github site.Params.linkedin site.Params.x site.Params.orcid site.Params.htb "https://navedkhan.dev/portfolio/")
+  "knowsAbout" (slice "eBPF" "runtime security" "detection engineering" "Kubernetes security" "binary analysis" "Linux")
+}}
+{{- if $p.IsHome }}
+{{- $site := dict
+  "@type" "WebSite"
+  "@id" (printf "%s#website" site.BaseURL)
+  "name" site.Title
+  "url" site.BaseURL
+  "description" site.Params.description
+  "inLanguage" "en"
+  "author" (dict "@id" (printf "%s#person" site.BaseURL))
+}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" (slice $site $person) | jsonify | safeJS }}</script>
+{{- else if .post }}
+{{- $post := dict
+  "@type" "BlogPosting"
+  "headline" $p.Title
+  "description" .desc
+  "url" $p.Permalink
+  "mainEntityOfPage" $p.Permalink
+  "image" .img
+  "datePublished" ($p.Date.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" ($p.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "inLanguage" "en"
+  "keywords" (delimit ($p.Params.tags | default slice) ", ")
+  "wordCount" $p.WordCount
+  "author" $person
+  "publisher" (dict "@id" (printf "%s#person" site.BaseURL))
+  "isPartOf" (dict "@type" "WebSite" "@id" (printf "%s#website" site.BaseURL) "name" site.Title "url" site.BaseURL)
+}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" (slice $post $person) | jsonify | safeJS }}</script>
+{{- else if $p.IsPage }}
+{{- $profile := dict "@type" "ProfilePage" "url" $p.Permalink "name" $p.Title "mainEntity" $person }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" (slice $profile) | jsonify | safeJS }}</script>
+{{- end }}

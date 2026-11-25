@@ -13,6 +13,12 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
   github      = "https://github.com/Naved124"
   linkedin    = "https://www.linkedin.com/in/md-naved-raja-khan-5102a52a0" 
   x           = "https://x.com/NavedKhan371877"
+  xHandle     = "@NavedKhan371877"
+  orcid       = "https://orcid.org/0009-0004-0426-2822"
+  htb         = "https://profile.hackthebox.com/profile/019fff3f-1f44-7340-a937-47140f1f94a2"
+  jobTitle    = "Security researcher and systems programmer"
+  # Preview image for pages that have none of their own (1200x630).
+  image       = "images/site-card.png"
 
 [menus]
   [[menus.main]]
