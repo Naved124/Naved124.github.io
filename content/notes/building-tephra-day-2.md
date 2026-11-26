@@ -191,5 +191,5 @@ something CI runs on every change.
 Day 3: network and file events, the first detection rules, and the attack harness that would
 start telling me what Tephra misses.
 
-The code is at [github.com/Naved124/tephra](https://github.com/Naved124/tephra). This post
+The code is at [github.com/tephrasec/tephra](https://github.com/tephrasec/tephra). This post
 covers commits `7096e66` and `7abdfc6`.

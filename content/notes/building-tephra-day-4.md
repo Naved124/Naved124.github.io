@@ -147,5 +147,5 @@ fire as one alert on the node, not as two events someone has to join later in a 
 Day 5 was mostly a fight with AWS quotas. After that: benchmarks, more evasions, and the fixes
 for the three that got through.
 
-The code is at [github.com/Naved124/tephra](https://github.com/Naved124/tephra). This post covers
+The code is at [github.com/tephrasec/tephra](https://github.com/tephrasec/tephra). This post covers
 commit `51976c1`. The full evasion write-ups are in `docs/evasions/`.

@@ -163,5 +163,5 @@ workflow built, and not something swapped in on the way.
 Day 4: evasions written to beat my own rules, the first blocking with BPF LSM, and correlation
 rules that need two events to fire.
 
-The code is at [github.com/Naved124/tephra](https://github.com/Naved124/tephra). This post covers
+The code is at [github.com/tephrasec/tephra](https://github.com/tephrasec/tephra). This post covers
 commits `3e540da`, `ecab6f9`, `0121ca9` and `a1cec7a`.

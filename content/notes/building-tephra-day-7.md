@@ -188,4 +188,4 @@ These were E09–E16, committed the next day. The baseline on the unchanged sens
 - **Audit your own comparisons.** Unequal coverage makes a cost number meaningless.
 - **Fix classes, not tests.** Commit the held-out tests before the fix, and let git be the witness.
 
-Code, raw results and the full build log: [github.com/Naved124/tephra](https://github.com/Naved124/tephra).
+Code, raw results and the full build log: [github.com/tephrasec/tephra](https://github.com/tephrasec/tephra).
