@@ -162,20 +162,15 @@ code, pre { font-family: var(--mono); font-size: .86em; }
   .post-row { grid-template-columns: 1fr; gap: .1rem; }
 }
 
-/* ---------- atmosphere: dot grid, pointer glow, sticky header ---------- */
-:root { --glow: rgba(180, 83, 9, .10); --dots: rgba(29, 28, 26, .07); --green: var(--ok); }
-@media (prefers-color-scheme: dark) { :root { --glow: rgba(245, 165, 36, .09); --dots: rgba(231, 228, 221, .055); } }
+/* ---------- atmosphere: dot grid, sticky header ---------- */
+:root { --dots: rgba(29, 28, 26, .07); --green: var(--ok); }
+@media (prefers-color-scheme: dark) { :root { --dots: rgba(231, 228, 221, .055); } }
 body {
   background-color: var(--bg);
   background-image: radial-gradient(var(--dots) 1px, transparent 1.2px);
   background-size: 22px 22px;
   background-attachment: fixed;
 }
-.bg-glow {
-  position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .6s;
-  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), var(--glow), transparent 70%);
-}
-.glow-on .bg-glow { opacity: 1; }
 main, .site-footer { position: relative; }
 .site-header {
   position: sticky; top: 0; z-index: 5;
