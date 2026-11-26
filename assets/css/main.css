@@ -6,16 +6,23 @@
 
 /* ---------- tokens ---------- */
 :root {
-  --bg: #fbfaf7;
-  --surface: #f2efe8;
-  --text: #1d1c1a;
-  --muted: #6b675f;
-  --line: #e2ddd2;
-  --accent: #b45309;        /* amber, dark enough for AA on light bg */
-  --accent-soft: #fdf0dd;
+  /* Night-sky palette: accent #7aadff, accent 2 #d7b8e0, glass #191c24,
+     plates #091e3c / #0c2e54 / #12406e. Light mode uses darker shades of
+     the same hues so text stays readable (AA) on a pale background. */
+  --bg: #eef3fb;
+  --surface: #e2eaf6;
+  --text: #0c1a30;
+  --muted: #4a5a75;
+  --line: #c9d6ea;
+  --accent: #2f5fae;
+  --accent-2: #8a5aa0;
+  --accent-soft: #dce8fb;
   --ok: #15803d;
-  --warn: #b45309;
+  --warn: #a16207;
   --bad: #b91c1c;
+  --glass: rgba(255, 255, 255, .55);
+  --glass-edge: rgba(255, 255, 255, .7);
+  --plate-1: #c9dcf6; --plate-2: #e7d6ee; --plate-3: #d3e2f7;
   --mono: "Maple Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans: "Maple Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --measure: 46rem;
@@ -23,16 +30,20 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1012;
-    --surface: #17191c;
-    --text: #e7e4dd;
-    --muted: #9a958b;
-    --line: #2a2d31;
-    --accent: #f5a524;
-    --accent-soft: #2b2112;
+    --bg: #091e3c;
+    --surface: #191c24;
+    --text: #e6ecf7;
+    --muted: #9aa8c2;
+    --line: rgba(122, 173, 255, .16);
+    --accent: #7aadff;
+    --accent-2: #d7b8e0;
+    --accent-soft: rgba(122, 173, 255, .12);
     --ok: #4ade80;
-    --warn: #f5a524;
+    --warn: #fbbf24;
     --bad: #f87171;
+    --glass: rgba(25, 28, 36, .55);
+    --glass-edge: rgba(122, 173, 255, .14);
+    --plate-1: #0c2e54; --plate-2: #12406e; --plate-3: #091e3c;
   }
 }
 
@@ -163,12 +174,17 @@ code, pre { font-family: var(--mono); font-size: .86em; }
 }
 
 /* ---------- atmosphere: dot grid, sticky header ---------- */
-:root { --dots: rgba(29, 28, 26, .07); --green: var(--ok); }
-@media (prefers-color-scheme: dark) { :root { --dots: rgba(231, 228, 221, .055); } }
+:root { --dots: rgba(12, 26, 48, .07); --green: var(--ok); }
+@media (prefers-color-scheme: dark) { :root { --dots: rgba(230, 236, 247, .05); } }
 body {
   background-color: var(--bg);
-  background-image: radial-gradient(var(--dots) 1px, transparent 1.2px);
-  background-size: 22px 22px;
+  /* Fixed, soft light behind the glass; it never moves with the pointer. */
+  background-image:
+    radial-gradient(var(--dots) 1px, transparent 1.2px),
+    radial-gradient(60vw 50vh at 85% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(50vw 45vh at 0% 35%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--plate-3), var(--plate-1) 55%, var(--plate-2));
+  background-size: 22px 22px, auto, auto, auto;
   background-attachment: fixed;
 }
 main, .site-footer { position: relative; }
@@ -201,11 +217,11 @@ main, .site-footer { position: relative; }
 .cmd .cursor { margin-left: 0; }
 .hero-name {
   margin: .1rem 0 1.1rem; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -.04em; font-weight: 700;
-  background: linear-gradient(100deg, var(--text) 30%, var(--accent) 110%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  background: linear-gradient(100deg, var(--text) 25%, var(--accent) 75%, var(--accent-2) 110%); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-dot { color: var(--accent); -webkit-text-fill-color: var(--accent); }
 .hero-role { margin: -.5rem 0 1.1rem; font: 600 1rem var(--mono); color: var(--muted); }
-@media (prefers-color-scheme: dark) { .hero-name { filter: drop-shadow(0 0 22px rgba(245,165,36,.18)); } }
+@media (prefers-color-scheme: dark) { .hero-name { filter: drop-shadow(0 0 22px rgba(122,173,255,.25)); } }
 .focus { list-style: none; padding: 0; margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; gap: .45rem; }
 .focus li { font: 600 .8rem var(--mono); padding: .25rem .65rem; border-radius: 999px; color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
 .hero-text { margin-bottom: .9rem; }
@@ -246,4 +262,20 @@ main, .site-footer { position: relative; }
 @media (max-width: 560px) {
   .term-body { padding: 1rem 1rem .9rem; }
   .term-title { display: none; }
+}
+
+/* ---------- liquid glass ---------- */
+.site-header, .term, .feature, .toc, .prose > pre, .highlight pre, .facts, .counts a, .prose blockquote {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%);
+  border-color: var(--glass-edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 20px 50px -30px rgba(0, 0, 0, .5);
+}
+.term, .feature, .toc, .prose > pre, .highlight pre, .facts { border-radius: 14px; }
+.highlight .chroma, .highlight .bg { background-color: transparent; }
+.site-header { box-shadow: none; border-bottom-color: var(--glass-edge); }
+.chip.type-notes { color: var(--accent-2); }
+/* Without blur support, the glass gets solid enough to read on. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header, .term, .feature, .toc, .prose > pre, .facts, .counts a, .prose blockquote { background: var(--surface); }
 }
