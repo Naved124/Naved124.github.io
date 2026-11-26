@@ -18,7 +18,7 @@ titleCaseStyle = "none"   # keep tags lowercase (#web, not #Web)
   htb         = "https://profile.hackthebox.com/profile/019fff3f-1f44-7340-a937-47140f1f94a2"
   jobTitle    = "Security researcher and systems programmer"
   # Preview image for pages that have none of their own (1200x630).
-  image       = "images/site-card.png"
+  image       = "images/site-card-night.png"
 
 [menus]
   [[menus.main]]
