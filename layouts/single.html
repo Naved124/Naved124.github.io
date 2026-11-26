@@ -54,10 +54,26 @@
   {{ end }}
 
   {{ if $isPost }}
-  <nav class="prevnext" aria-label="more posts">
-    {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}"><span>← newer</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
-    {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}"><span>older →</span>{{ .Title }}</a>{{ end }}
+  {{/* Previous and next stay inside one series (front matter "series"),
+       in date order: previous is the earlier post, next the later one.
+       A post with no series, or alone in it, has no links. */}}
+  {{ with .Params.series }}
+  {{ $series := where $.CurrentSection.RegularPages "Params.series" . }}
+  {{ $series = $series.ByDate }}
+  {{ $prev := false }}{{ $next := false }}{{ $seen := false }}
+  {{ range $series }}
+    {{ if eq .RelPermalink $.RelPermalink }}{{ $seen = true }}
+    {{ else if not $seen }}{{ $prev = . }}
+    {{ else if not $next }}{{ $next = . }}
+    {{ end }}
+  {{ end }}
+  {{ if or $prev $next }}
+  <nav class="prevnext" aria-label="more in this series">
+    {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}"><span>← previous</span>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><span>next →</span>{{ .Title }}</a>{{ end }}
   </nav>
+  {{ end }}
+  {{ end }}
   {{ end }}
 </article>
 {{ end }}

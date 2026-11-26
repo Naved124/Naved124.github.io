@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, day 3: from seeing events to catching attacks"
 date: 2026-11-12
+series: tephra
 draft: false
 tags:
   - kubernetes

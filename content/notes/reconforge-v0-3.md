@@ -1,6 +1,7 @@
 ---
 title: "reconforge v0.3: why keyword CVE matching lies"
 date: 2026-11-04
+series: reconforge
 tags: ["tools", "recon", "python", "nmap", "nvd"]
 summary: "Replacing a keyword CVE search with CPE matching, local version checks and a confidence level on every result. Most of the work turned out to be NVD's data, not the API."
 image: images/reconforge-v03-card.png

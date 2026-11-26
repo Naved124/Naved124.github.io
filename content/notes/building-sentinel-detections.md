@@ -1,6 +1,7 @@
 ---
 title: "sentinel-detections: KQL detection rules that have to prove themselves"
 date: 2026-11-08
+series: sentinel
 draft: false
 tags: [detection, kql, sentinel, azure, blue-team]
 description: "Fifteen Microsoft Sentinel rules in KQL, each with a triage playbook and tests that run on the real Kusto engine. Two of the rules were wrong until the tests said so."

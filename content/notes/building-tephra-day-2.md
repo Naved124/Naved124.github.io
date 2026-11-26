@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, day 2: which pod did that come from?"
 date: 2026-11-11
+series: tephra
 draft: false
 tags:
   - kubernetes

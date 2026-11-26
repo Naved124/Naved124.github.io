@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, days 5 and 6: a quota wall and the oldest kernel"
 date: 2026-11-18
+series: tephra
 draft: false
 tags:
   - kubernetes

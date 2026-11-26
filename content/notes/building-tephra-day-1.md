@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, day 1: from a design doc to a program in the kernel"
 date: 2026-11-10
+series: tephra
 draft: false
 tags:
   - kubernetes

@@ -1,6 +1,7 @@
 ---
 title: "building reconforge: recon that writes the report for you"
 date: 2026-10-30
+series: reconforge
 draft: false
 tags: [tools, recon, python, nmap]
 description: "Why I built a scoped recon-to-report tool, how its scope guard and findings engine work, and what it caught on HTB Fawn."

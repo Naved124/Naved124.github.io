@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, day 4: attacking my own sensor"
 date: 2026-11-13
+series: tephra
 draft: false
 tags:
   - kubernetes

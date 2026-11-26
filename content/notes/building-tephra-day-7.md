@@ -1,6 +1,7 @@
 ---
 title: "Building tephra, day 7: what the sensor costs, and auditing my own results"
 date: 2026-11-19
+series: tephra
 draft: false
 tags:
   - kubernetes
