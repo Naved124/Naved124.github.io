@@ -79,7 +79,7 @@ closed" design as the sensor it measures.
 
 ## Results (Tephra against no sensor)
 
-Median of 5; full brackets in [docs/benchmarks.md](https://github.com/Naved124/tephra/blob/main/docs/benchmarks.md).
+Median of 5; full brackets in [docs/benchmarks.md](https://github.com/tephrasec/tephra/blob/main/docs/benchmarks.md).
 
 | Workload | Alerts only | Every event exported | Enforcement on | Agent CPU (alerts only) |
 |---|---|---|---|---|

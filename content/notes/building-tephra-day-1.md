@@ -35,7 +35,7 @@ They exist, they're good, and if you need runtime detection today you should use
 
 I wanted to understand how this works from the kernel up, not just how to configure it. And the
 way to really understand a detection tool is to build one and then attack it. So
-[tephra](https://github.com/Naved124/tephra) is a learning project with rules I'd want from any
+[tephra](https://github.com/tephrasec/tephra) is a learning project with rules I'd want from any
 security tool:
 
 - **Prove coverage with real attacks.** A harness that runs actual attack techniques against a
